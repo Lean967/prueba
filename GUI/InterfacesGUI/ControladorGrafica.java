@@ -17,6 +17,5 @@ public interface ControladorGrafica {
     public Observer registrarEntidad(EntidadLogica entidad);
     public Observer registrarSnowBro(SnowBro snowBro);
     public void configurarVentana();
-
-    public PanelPartida getPanelPartida();
+    public void configurarControles(SnowBro snowBro);
 }

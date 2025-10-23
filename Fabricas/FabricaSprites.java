@@ -36,7 +36,7 @@ public abstract class FabricaSprites {
 
     public Sprites getSpritesEstatica(){
         Map<Integer,String> mapeoSprites = new HashMap<Integer,String>();
-        mapeoSprites.put(1, rutaASprites+"/platform.png");
+        mapeoSprites.put(1, rutaASprites+"/plataformas-rosas/plataforma-rosa-base.png");
         return (new Sprites (mapeoSprites, 01));
     }
 }

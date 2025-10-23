@@ -15,9 +15,12 @@ public class Launcher {
                     Juego juego = new Juego(controladorGrafica);
                     controladorGrafica.registrarControladorDeJuego(juego);
                     juego.configurar();
+
                 }catch (Exception e) {
 					e.printStackTrace();
 				}
+
+                
             }
         });
     }

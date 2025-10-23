@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import src.CapaDatos.ConstantesVistas;
+import src.CapaDatos.TeclasJugador;
 import src.GUI.InterfacesGUI.ControladorVistas;
 import src.GUI.Observers.Observer;
 import src.GUI.Observers.ObserverGrafico;
@@ -56,9 +57,22 @@ public class PanelPartida extends PanelVista{
         ObserverGrafico observerEntidad = new ObserverGrafico( entidad);
         lienzoJuego.add(observerEntidad);
 
+        observerEntidad.update();
+
         actualizar();
         return observerEntidad;
     }
+
+    public void configurarTeclasJugador(SnowBro snowBro){
+        //  Manejador de teclas
+        TeclasJugador teclas = new TeclasJugador(snowBro);
+        snowBro.setTeclas(teclas);
+
+        setFocusable(true);
+        addKeyListener(teclas);
+        requestFocusInWindow();
+    }
+
 
     
 

@@ -5,20 +5,21 @@ import java.awt.event.KeyEvent;//representa un evento de teclado. Cada vez que e
 import java.awt.event.KeyListener;
 
 import src.Juego.Entidad;
+import src.Jugador.SnowBro;
 
 public class TeclasJugador implements KeyListener{
     private boolean arriba, abajo, izquierda, derecha,quieto;
-    protected Entidad entidad;
+    protected SnowBro snowbro;
     protected int direccion;
 
-    public TeclasJugador(Entidad entidad) {
+    public TeclasJugador(SnowBro snowbro) {
         arriba = false;
         abajo = false;
         izquierda = false;
         derecha = false;
         quieto=true;
 
-        this.entidad = entidad;
+        this.snowbro = snowbro;
         this.direccion = ConstantesTeclado.Quieto; 
     }
 
@@ -78,5 +79,9 @@ public class TeclasJugador implements KeyListener{
         if(derecha) return 10;
         if(quieto) return 0;
         return 0;
+    }
+
+    public SnowBro getSnowBro(){
+        return snowbro;
     }
 }

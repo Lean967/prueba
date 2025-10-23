@@ -3,6 +3,7 @@ package src.GUI;
 import javax.swing.JFrame;
 
 import src.CapaDatos.ConstantesVistas;
+import src.CapaDatos.TeclasJugador;
 import src.GUI.InterfacesGUI.ControladorGrafica;
 import src.GUI.InterfacesGUI.ControladorVistas;
 import src.GUI.Observers.Observer;
@@ -53,6 +54,11 @@ public class GUI implements ControladorGrafica, ControladorVistas {
         return observerEntidad;
     }
 
+    public void configurarControles(SnowBro snowBro){
+        panelPartida.configurarTeclasJugador(snowBro);
+
+    }
+
     public void mostrarPantallaMenu(){
         ventana.setContentPane(panelMenu);
         actualizarGUI();
@@ -71,6 +77,7 @@ public class GUI implements ControladorGrafica, ControladorVistas {
     public void mostrarPantallaFinDeJuego(){
 
     }
+
 
     protected void actualizarGUI() {
 		ventana.revalidate();

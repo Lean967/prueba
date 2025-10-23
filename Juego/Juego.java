@@ -1,6 +1,5 @@
 package src.Juego;
 
-import src.CapaDatos.EstadoDireccion;
 import src.CapaDatos.TeclasJugador;
 import src.Fabricas.FabricaEntidades;
 import src.Fabricas.FabricaSprites;
@@ -54,31 +53,25 @@ public class Juego implements ControladorDeJuego{
 
     public void iniciar() {
         this.administradorNivel = new AdministradorNivel(modoDeJuego, fabricaEntidades);
+        Jugador jugadorSnowBro = new Jugador("pou");
+        this.jugador = jugadorSnowBro;
         nivelActual = administradorNivel.getSiguienteNivel();
+        jugador.setSnowBro(administradorNivel.getNivelActual().getSnowBro());
         nivelActual.iniciarNivel();
         registrarObservers();
+        configurarControles();
         controladorGrafica.mostrarPantallaPartida();
-        SnowBro snowBro = administradorNivel.getNivelActual().getSnowBro();
 
-    // ✅ Manejador de teclas
-    TeclasJugador teclas = new TeclasJugador(snowBro);
-
-    // ✅ Obtenemos el PanelPartida de la interfaz gráfica
-    var panel = controladorGrafica.getPanelPartida();
-    panel.addKeyListener(teclas);
-    panel.setFocusable(true);
-    panel.requestFocusInWindow();
-
-    // ✅ Creamos un timer que mueve al SnowBro
-    javax.swing.Timer timer = new javax.swing.Timer(20, e -> {
-        snowBro.moverse(teclas);
-    });
-    timer.start();
+        hacerCicloDeJuego();
     }
 
     protected void registrarObservers(){
         registrarObserverJugador(administradorNivel.getNivelActual().getSnowBro());
         registrarObserverEntidades(administradorNivel.getNivelActual().getEntidades());
+    }
+
+    protected void configurarControles(){
+        controladorGrafica.configurarControles(jugador.getSnowBro());
     }
 
     protected void registrarObserverJugador(SnowBro snowBro){
@@ -97,6 +90,13 @@ public class Juego implements ControladorDeJuego{
 
     public void setFabricaEntidades(FabricaEntidades fabrica){
         this.fabricaEntidades = fabrica;
+    }
+
+    public void hacerCicloDeJuego(){
+        javax.swing.Timer timer = new javax.swing.Timer(20, e -> {
+            jugador.getSnowBro().moverse();
+            });
+        timer.start();
     }
 
 

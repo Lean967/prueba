@@ -1,6 +1,6 @@
 package src.Juego;
 
-import src.CapaDatos.EstadoDireccion;
+import src.CapaDatos.TeclasJugador;
 import src.Fabricas.Sprites;
 import src.Municiones.Municion;
 
@@ -11,7 +11,7 @@ public class Personaje extends Entidad {
     public Personaje(Sprites misSprites, Posicion posicion) {
         super(misSprites, posicion);
     }
-    public void moverse(EstadoDireccion ed){
+    public void moverse(TeclasJugador teclas){
 
     }
     public void recibirAtaque(Municion m){

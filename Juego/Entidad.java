@@ -4,8 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import src.Fabricas.Sprites;
 import src.GUI.Observers.Observer;
+import src.Visitor.Colisionable;
 
-public class Entidad implements EntidadLogica { 
+public class Entidad implements EntidadLogica, Colisionable { 
     protected Posicion posicion;
     protected List<Observer> observers;
     protected Sprites misSprites;
@@ -15,7 +16,7 @@ public class Entidad implements EntidadLogica {
         this.posicion = pos;
         this.observers= new LinkedList<>();
     }
-    public void acceptColision(Entidad e){
+    public void aceptarColision(Entidad e){
 
     }
     public void getState(){}

@@ -7,24 +7,22 @@ import src.Juego.Posicion;
 import src.Visitor.Colisionable;
 import src.Visitor.Colisionador;
 import src.CapaDatos.ConstantesTeclado;
-import src.CapaDatos.EstadoDireccion;
 import src.CapaDatos.TeclasJugador;
 import src.Municiones.Municion;
 
 public class SnowBro extends Personaje implements Colisionador, Colisionable {
     protected EstadoS state;
+    protected TeclasJugador teclas;
 
     public SnowBro(Sprites misSprites, Posicion posicion) {
         super(misSprites, posicion);
     }
     // @ttatimd SnowBro debe redefinir getSprites() para pedirselo a su state 
     
-    public void moverse(TeclasJugador teclas){
-        int dirActual=teclas.get_direccion();
-        this.setPosicion(dirActual,0);
-        int paso = 5; // velocidad del movimiento
+    public void moverse(){
+        int paso = 2; // velocidad del movimiento
 
-        System.out.println("Y: "+posicion.getY()+"// X: "+posicion.getX());
+        //System.out.println("Y: "+posicion.getY()+"// X: "+posicion.getX());
 
         if (teclas.getArriba()) {
             if(posicion.getY() - paso < -10)
@@ -52,6 +50,14 @@ public class SnowBro extends Personaje implements Colisionador, Colisionable {
         }
 
         notificarObservers();
+    }
+
+    public void setTeclas(TeclasJugador teclas){
+        this.teclas=teclas;
+    }
+
+    public TeclasJugador getTeclasJugador(){
+        return this.teclas;
     }
 
     public void recibirAtaque(Municion m){

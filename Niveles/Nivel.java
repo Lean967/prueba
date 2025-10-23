@@ -2,6 +2,7 @@ package src.Niveles;
 import java.util.LinkedList;
 import src.Jugador.Jugador;
 import src.Jugador.SnowBro;
+import src.Municiones.Municion;
 import src.Juego.Entidad;
 import src.Juego.Posicion;
 import src.Obstaculos.Obstaculo;
@@ -17,6 +18,7 @@ public abstract class Nivel {
     protected SnowBro snowBro;
     protected LinkedList<PowerUp> powers;
     protected LinkedList<Plataforma> plataformas;
+    protected LinkedList<Municion> municiones;
     protected FabricaEntidades fabricaEntidades;
     protected int frecuenciaEnemigos;
 
@@ -26,6 +28,7 @@ public abstract class Nivel {
         enemigos = new LinkedList<>();
         powers = new LinkedList<>();
         plataformas = new LinkedList<>();
+        municiones = new LinkedList<>();
     }
 
     public abstract void iniciarNivel();
@@ -66,7 +69,9 @@ public abstract class Nivel {
     public void setDemonioRojo(int x, int y){
         listaEntidades.addLast(fabricaEntidades.getDemonioRojo(new Posicion(x, y)));
     }
-    public abstract void setRanaDeFuego();
+    public void setRanaDeFuego(){
+        
+    }
     public abstract void setMoguera();
     public abstract void setKamakichi();
 
@@ -96,8 +101,26 @@ public abstract class Nivel {
     public Iterable<Entidad> getEntidades(){
         return this.listaEntidades;
     }
+
+    public Iterable<Obstaculo> getObstaculos(){
+        return this.obstaculos;
+    }
+
+    public Iterable<Enemigo> getEnemigos(){
+        return this.enemigos;
+    }
+
+    public Iterable<PowerUp> getPowers(){
+        return this.powers;
+    }
+
+    public Iterable<Plataforma> getPlataformas(){
+        return this.plataformas;
+    }
+
+    public Iterable<Municion> getMuniciones(){
+        return this.municiones;
+    }
     
-
-
     
 }
